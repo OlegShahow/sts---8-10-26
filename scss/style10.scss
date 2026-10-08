@@ -1,0 +1,305 @@
+// @import "null.scss";
+@import "style.scss";
+// // подключать только если есть в этих файлах данные. пустыми не подключать !!
+// @import "var.scss";
+// @import "basestyle.scss";
+@import "style0.scss";
+//.......................................................................................
+
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../img/2.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
+
+.main {
+	margin-top: 0;
+}
+//.......................................................................................
+
+.war {
+	width: 60%;
+	margin: 0 auto;
+	@media (max-width: toRem(800)) {
+		width: 80%;
+	}
+}
+
+// ----------------------------------------------------------------------------
+
+#universe {
+	position: relative;
+	margin: 10vh auto 0;
+	width: 96%;
+	@include adaptiveValue("height", 600, 300);
+
+	text-align: center;
+	overflow: hidden;
+}
+
+.star0 {
+	height: 1px;
+	width: 1px;
+	opacity: 1;
+	position: absolute;
+}
+
+.star1 {
+	height: 2px;
+	width: 2px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star2 {
+	height: 3px;
+	width: 3px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star3 {
+	height: 4px;
+	width: 4px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.universe-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: toRem(40);
+	text-shadow: 0 0 20px rgb(12, 11, 11);
+	margin: 0;
+	padding: 0;
+	z-index: 10;
+	pointer-events: none; /* Чтобы заголовок не мешал взаимодействию со звёздами */
+	font-weight: 600;
+	letter-spacing: 2px;
+
+	@media (max-width: toRem(500)) {
+		font-size: toRem(30);
+	}
+}
+
+// -----------------------    popap
+//
+
+.galery__body {
+	@media (max-width: (1200)) {
+		padding: toRem(30) 0;
+	}
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 600;
+	height: 100vh;
+	overflow-y: auto;
+
+	display: flex;
+	flex-direction: column;
+	gap: toRem(30);
+	padding: toRem(30) toRem(50);
+	align-items: center;
+
+	background-image: url(../img/2.jpeg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	// стартовое — спрятан вверху
+	transform: translateY(-100%);
+	visibility: hidden;
+	transition:
+		transform 0.5s ease,
+		visibility 0s linear 0.5s;
+
+	&.is-open {
+		transform: none; // ← ВАЖНО: не translateY(0), а none
+		visibility: visible;
+		transition:
+			transform 0.5s ease,
+			visibility 0s linear 0s;
+	}
+
+	// --- кнопка ЗАКРЫТЬ: внутри попапа, но fixed от окна ---
+	.bitva--closed {
+		position: fixed;
+		top: 50%;
+		right: toRem(30);
+		transform: translateY(-50%);
+		z-index: 10;
+
+		@media (max-width: (1200px)) {
+			right: 0;
+		}
+	}
+
+	// --- ряды ---
+	& .row {
+		display: flex;
+		gap: 8px;
+		width: 100%;
+		justify-content: center;
+
+		padding: toRem(10);
+
+		& .voice {
+			width: 5%;
+			animation: pulse 1.5s ease-in-out infinite;
+		}
+
+		& .komanda {
+			align-items: center;
+		}
+
+		& p {
+			@include adaptiveValue("font-size", 50, 20);
+			color: white;
+			text-shadow: 0px 0px 26px black;
+			font-weight: 900;
+		}
+
+		.item {
+			min-width: 0;
+			overflow: hidden;
+			border-radius: 8px;
+			// border: 2px solid white;
+
+			img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
+		&--big {
+			height: 80vh;
+			max-height: 800px;
+
+			.item {
+				flex: 1 1 0;
+				max-width: 80%;
+			}
+		}
+	}
+}
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	} /* +5% */
+	100% {
+		transform: scale(1);
+	}
+}
+
+.bitva {
+	width: toRem(200);
+	padding: toRem(10);
+	font-size: toRem(20);
+	font-weight: 900;
+	color: rgb(8, 8, 8);
+	letter-spacing: 1.4;
+	// background: transparent;
+	box-shadow:
+		inset 0 8px 12px -8px rgb(11, 11, 11),
+		/* тень сверху */ inset 0 -8px 12px -8px rgb(15, 15, 15); /* тень снизу */
+
+	&:hover {
+		box-shadow: none;
+	}
+}
+.bitva--closed {
+	position: fixed;
+	top: 50%;
+	right: 5%;
+	opacity: 1;
+	-webkit-animation: spin 4s linear infinite;
+	animation: spin 4s linear infinite;
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
+	transform-origin: center center;
+	width: toRem(50);
+	cursor: pointer;
+	will-change: transform;
+	& img {
+		width: 100%;
+	}
+}
+/* ===== Блок управления музыкой в правом верхнем углу попапа ===== */
+.music-controls {
+	position: fixed; /* фиксирован к окну, не скроллится */
+	top: toRem(20);
+	right: 2%;
+	z-index: 700; /* выше галереи (z-index: 600), но ниже если надо */
+	display: flex;
+	flex-direction: column; /* вертикально */
+	align-items: center;
+	gap: 10px;
+	padding: 8px;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+
+	@media (max-width: (1200px)) {
+		right: 0;
+	}
+}
+
+/* Кнопка вкл/выкл */
+.music-btn {
+	width: toRem(40);
+	height: toRem(40);
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+	font-size: toRem(18);
+	background: rgba(255, 255, 255, 0.9);
+	transition:
+		background 0.2s,
+		transform 0.1s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	padding: 0;
+}
+.music-btn:hover {
+	background: #fff;
+}
+.music-btn:active {
+	transform: scale(0.95);
+}
+.music-btn.is-muted {
+	opacity: 0.45;
+}
+
+/* Вертикальный ползунок громкости */
+.volume-slider {
+	writing-mode: vertical-lr; /* Firefox */
+	direction: rtl; /* вверх = громче */
+	width: toRem(8);
+	height: toRem(200);
+	cursor: pointer;
+	accent-color: #fff;
+}

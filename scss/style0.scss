@@ -1,0 +1,144 @@
+@import "null.scss";
+@import "style.scss";
+// подключать только если есть в этих файлах данные. пустыми не подключать !!
+@import "var.scss";
+@import "basestyle.scss";
+
+//.......................................................................................
+
+.main {
+	// margin-top: 20vh;
+	margin-top: 0;
+}
+
+// ---------------------------------------
+.tehbody__img {
+	position: fixed;
+	top: 50%;
+	right: 2%;
+	opacity: 0.5;
+
+	//  вращение кнопки
+	animation: spin 4s linear infinite;
+	transform-origin: center center;
+	will-change: transform;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+// ---------------------------------------
+
+.tehbody {
+	position: relative;
+	overflow: auto;
+}
+
+.tehbody__img {
+	position: fixed;
+	top: 50%;
+	right: 2%;
+	opacity: 0.5;
+}
+
+.tehbody span {
+	color: blue;
+	font-weight: bold;
+}
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../img/2.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
+
+.video0 {
+	margin: 0 auto;
+	width: 70%;
+	height: auto; /* растягивается по содержимому */
+	@media (max-width: toRem(800)) {
+		width: 80%;
+	}
+}
+
+.video00 {
+	width: 100%; /* полная ширина блока */
+	height: auto; /* сохраняет пропорции видео */
+	display: block; /* убирает стандартный отступ снизу у video */
+}
+
+// --------------------------------------------
+
+#universe {
+	position: relative;
+	margin: 10vh auto 0;
+	width: 96%;
+	@include adaptiveValue("height", 600, 400);
+
+	text-align: center;
+
+	overflow: hidden;
+
+	@media (max-width: toRem(800)) {
+		// margin: 20vh auto 10vh;
+	}
+}
+
+.star0 {
+	height: 1px;
+	width: 1px;
+	opacity: 1;
+	position: absolute;
+}
+
+.star1 {
+	height: 2px;
+	width: 2px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star2 {
+	height: 3px;
+	width: 3px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star3 {
+	height: 4px;
+	width: 4px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.universe-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+
+	@include adaptiveValue("font-size", 40, 30);
+	text-shadow: 0 0 20px rgb(12, 11, 11);
+	margin: 0;
+	padding: 0;
+	z-index: 10;
+	pointer-events: none; /* Чтобы заголовок не мешал взаимодействию со звёздами */
+	font-weight: 600;
+	letter-spacing: 2px;
+}

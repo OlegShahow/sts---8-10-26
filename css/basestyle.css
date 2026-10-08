@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "one";
+  src: url("../fonts/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf");
+}
+@font-face {
+  font-family: "tw";
+  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf");
+}
+@font-face {
+  font-family: "Brutal";
+  src: url("../fonts/Brutal gg.ttf");
+}
+@font-face {
+  font-family: "You";
+  src: url("../fonts/You can make your own font.ttf");
+}
+@font-face {
+  font-family: "Acsiomas";
+  src: url("../fonts/Acsiomasupershockc.otf");
+}
+@font-face {
+  font-family: "Astropolis";
+  src: url("../fonts/Astropolis Laser 3D Italic.ttf");
+}
+@font-face {
+  font-family: "num1";
+  src: url("../fonts/number/Bighaustitul extrabold.ttf");
+}
+@font-face {
+  font-family: "num2";
+  src: url("../fonts/number/Dogfighter.ttf");
+}
+@font-face {
+  font-family: "num3";
+  src: url("../fonts/number/Motrhead Grotesk.ttf");
+}
+@font-face {
+  font-family: "ccc";
+  src: url(../fonts/BancoDi\ Bold.ttf);
+}
+@font-face {
+  font-family: "Country";
+  src: url("../fonts/Country Western Swing Title.ttf");
+}

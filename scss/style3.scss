@@ -1,0 +1,96 @@
+// @import "null.scss";
+@import "style.scss";
+// // подключать только если есть в этих файлах данные. пустыми не подключать !!
+// @import "var.scss";
+// @import "basestyle.scss";
+@import "style0.scss";
+//.......................................................................................
+
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../img/2.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
+
+.main {
+	margin-top: 0;
+}
+
+
+//.......................................................................................
+
+.green {
+	width: 60%;
+	margin: 0 auto;
+	@media (max-width: toRem(800)) {
+		width: 80%;
+	}
+}
+
+#universe {
+	position: relative; /* 👈 ГЛАВНОЕ! */
+	margin: 10vh auto 0;
+	width: 96%;
+	@include adaptiveValue("height", 500, 300);
+
+	text-align: center;
+	overflow: hidden;
+}
+
+.star0 {
+	height: 1px;
+	width: 1px;
+	opacity: 1;
+	position: absolute;
+}
+
+.star1 {
+	height: 2px;
+	width: 2px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star2 {
+	height: 3px;
+	width: 3px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star3 {
+	height: 4px;
+	width: 4px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.universe-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: toRem(40);
+	text-shadow: 0 0 20px rgb(12, 11, 11);
+	margin: 0;
+	padding: 0;
+	z-index: 10;
+	pointer-events: none; /* Чтобы заголовок не мешал взаимодействию со звёздами */
+	font-weight: 600;
+	letter-spacing: 2px;
+
+	@media (max-width: toRem(500)) {
+		font-size: toRem(30);
+	}
+}

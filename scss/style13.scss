@@ -1,0 +1,153 @@
+@import "null.scss";
+// @import "style.scss";
+// // подключать только если есть в этих файлах данные. пустыми не подключать !!
+// @import "var.scss";
+// @import "basestyle.scss";
+@import "style0.scss";
+//.......................................................................................
+
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../img/2.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
+
+.main {
+	// margin-top: 20vh;
+	margin-top: 0;
+}
+//.......................................................................................
+
+// ----------------------------------------------------------------------------
+
+#universe {
+	position: relative;
+	// margin: 0 auto ;
+	margin: 10vh auto 0;
+	width: 96%;
+	@include adaptiveValue("height", 600, 300);
+	// box-shadow: 0px 0px 16px black;
+
+	text-align: center;
+
+	// background-image: url(../img/fon2.jpg);
+	// background-repeat: no-repeat;
+	// background-size: cover;
+	// background-position: center;
+	overflow: hidden;
+}
+
+.star0 {
+	height: 1px;
+	width: 1px;
+	opacity: 1;
+	position: absolute;
+}
+
+.star1 {
+	height: 2px;
+	width: 2px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star2 {
+	height: 3px;
+	width: 3px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.star3 {
+	height: 4px;
+	width: 4px;
+	border-radius: 50%;
+	opacity: 1;
+	position: absolute;
+}
+
+.universe-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: toRem(40);
+	text-shadow: 0 0 20px rgb(12, 11, 11);
+	margin: 0;
+	padding: 0;
+	z-index: 10;
+	pointer-events: none; /* Чтобы заголовок не мешал взаимодействию со звёздами */
+	font-weight: 600;
+	letter-spacing: 2px;
+	// text-transform: uppercase;
+
+	@media (max-width: toRem(500)) {
+		font-size: toRem(30);
+	}
+}
+
+// --------------------   galery
+
+// .galery {
+// 	&__body {
+// 		display: flex;
+// 		flex-direction: column;
+// 		gap: 8px;
+// 		row-gap: toRem(30);
+// 		padding: toRem(30) toRem(50);
+// 		align-items: center;
+
+// 		position: relative;
+// 		width: 100vw;
+// 		height: 100vh;
+// 		background-image: url(../img/2.jpg);
+// 		background-repeat: no-repeat;
+// 		background-position: center;
+// 		background-attachment: fixed;
+// 		background-size: cover;
+// 		overflow-y: auto;
+
+// 		& .row {
+// 			display: flex;
+// 			gap: 8px;
+// 			width: 100%;
+// 			justify-content: center;
+// 			border: 2px solid white;
+// 			padding: toRem(10);
+
+// 			.item {
+// 				min-width: 0;
+// 				overflow: hidden;
+// 				border-radius: 8px;
+
+// 				img {
+// 					display: block;
+// 					width: 100%;
+// 					height: 100%;
+// 					object-fit: contain;
+// 				}
+// 			}
+
+// 			// БОЛЬШОЙ ряд
+// 			&--big {
+// 				height: 80vh;
+// 				max-height: 800px; // не выше 800px даже на 4K
+
+// 				.item {
+// 					flex: 1 1 0; // ← растягиваются и делят ширину поровну
+// 					max-width: 80%; // ← но не больше 80% (актуально для одной картинки)
+// 				}
+// 			}
+// 		}
+// 	}
+// }

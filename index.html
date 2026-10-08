@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="width=device-width , initial-scale = 1.0 , maximum-scale = 1.0 , user-scalable = 0">
+
+	<style>
+		.run {
+			position: fixed;
+			inset: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 9999;
+			overflow: hidden;
+			background: #000;
+			/* ← ДОБАВИЛ ЭТУ СТРОКУ */
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			opacity: 1;
+			transition: opacity 1s ease;
+		}
+	</style>
+
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/null.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300&display=swap" rel="stylesheet">
+
+	<title>BOOK</title>
+</head>
+
+<body>
+
+
+
+
+
+
+
+	<audio class="run__audio" src="./sound/solar.mp3" loop preload="auto"></audio>
+
+	<div class="run">
+		<video class="run__video" autoplay muted loop playsinline>
+			<source src="./gif/boom2.mp4" type="video/mp4">
+		</video>
+
+
+
+		<!-- <div class="run__darken"></div> -->
+
+		<div class="run__text">
+			<p class="line-1">И была пустота...</p>
+			<p class="line-2">И вспыхнул свет...</p>
+			<p class="line-3">И грянул взрыв...</p>
+			<p class="line-4">И родилась Вселенная...</p>
+			<div class="run__button">
+				<button>ЧИТАТЬ</button>
+			</div>
+		</div>
+	</div>
+
+
+	<header class="header">
+		<button class="sound-toggle"></button>
+		<div class="nav">
+			<button class="nav--button">ВЫБЕРИ ЭПИЗОД</button>
+
+		</div>
+	</header>
+
+	<ul class="nav--list">
+
+
+		<p>Заглавие </p>
+		<li><a href="index0.html">Эпизод 0 . Пепел Старого Мира.
+				Истоки нового.</a></li>
+		<li><a href="index1.html">Эпизод 1 . Элайа .
+				Будни Альянса.</a></li>
+		<li><a href="index2.html#ep2">Эпизод 2 . Гость .</a></li>
+		<li><a href="index3.html#ep3">Эпизод 3 . Глоток свежей энергии .</a></li>
+		<li><a href="index4.html#ep4">Эпизод 4 . Проэкт =МОЛОТ= .</a></li>
+		<li><a href="index5.html#ep5">Эпизод 5 . С.КО.М</a></li>
+		<li><a href="index6.html#ep6">Эпизод 6 . "ИГЛА".Первый укол</a></li>
+		<li><a href="index7.html#ep7">Эпизод 7 . "Извне"</a></li>
+		<li><a href="index8.html#ep8">Эпизод - 8 . Неопределённая определённость</a></li>
+		<li><a href="index9.html#ep9">Эпизод - 9 . Контакт</a></li>
+		<li><a href="index10.html#ep10">Эпизод - 10 . Битва</a></li>
+		<li><a href="index11.html#ep11">Эпизод - 11</a></li>
+		<li><a href="index12.html#ep12">Эпизод - 12 . Адрес</a></li>
+	</ul>
+
+
+	<div class="wrapper">
+
+
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="./icon/fone2.mp4" type="video/mp4">
+		</video>
+
+
+		<div class="zaglavie">
+			<h1 class="world">Тени Трёх Звёзд</h1>
+			<img src="./img//mete.png" class="b2">
+			<img src="./img/b3.png" class="b3">
+		</div>
+
+
+		<main class="main">
+
+			<div class="main__container">
+
+				<!-- <p class="book2">МИНИ-КНИГА &nbsp;Часть вторая</p> -->
+				<p class="book2">МИНИ-КНИГА<br><br>* Второй том *</p>
+
+
+				<div class="about">
+
+					<p>Автор : <span>Шахов Олег</span></p>
+					<p>Жанр : <span>Фантастика / космофонтастика / космоопера / боевая космофантастика</span></p>
+
+				</div>
+
+
+				<div class="prolog">
+					<h2>- Предисловие -</h2>
+					<p class="predislovie">Мини-книга описывает ключевые события мира трёх звёздных систем - в очень
+						коротких эпизодах.</p>
+				</div>
+
+
+
+				<div class="prolog">
+					<h2>- Пролог -</h2>
+
+
+					<p>Они ушли из старого мира тихо.<br>
+						Без войн. Без сожалений. Без прощаний.<br>
+
+						Три человека, три решения, три будущих мира.<br>
+
+						Старую Федерацию они оставили позади — гниющую, коррумпированную, неспособную измениться.<br>
+						Они не стали её спасать.<br>
+						Они решили начать заново.<br>
+
+						Теперь у каждого из них — своя планета.<br>
+						Свои законы.<br>
+						Своя версия справедливости.<br>
+
+						Та история закончилась.<br>
+						Эта — только начинается...</p>
+				</div>
+
+			</div>
+
+
+		</main>
+
+
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="next">
+
+					<a class="next" href="index0.html">НАЧАЛО<img src="./icon/next.png"></a>
+				</div>
+			</div>
+		</footer>
+
+		<div class="contacts__block">
+
+			<!-- <div class="contacts--name adr">
+				<p>Автор</p>
+				<span>= ШАХ =</span>
+			</div> -->
+
+
+			<div class="contacts--adress adr">
+				<p>
+					<strong>Телефон:</strong><br>
+					<a href="tel:+380501234567">+38 (050) 123-45-67</a>
+				</p>
+
+				<p>
+					<strong>Email:</strong><br>
+					<a href="mailto:info@example.com">info@example.com</a>
+				</p>
+			</div>
+
+
+			<div class="contacts--vizitka adr">
+				<div class="creted">
+					<p>Created by :<img class="sh" src='./icon/SH.png'>Studio</p>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+	<script src="./script/script.js" defer></script>
+
+
+</body>
+
+</html>

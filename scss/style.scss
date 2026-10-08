@@ -1,0 +1,823 @@
+@import "null.scss";
+
+// подключать только если есть в этих файлах данные. пустыми не подключать !!
+@import "var.scss";
+@import "basestyle.scss";
+
+//.......................................................................................
+
+@function toRem($value) {
+	$baseFontSize: 16;
+	@return ($value/$baseFontSize) * 1rem;
+}
+
+//.......................................................................................
+
+$maxWidth: 1920;
+
+@mixin adaptiveValue($property, $pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$addMobSize: $addSize + $addSize * 0.7;
+
+	@media (min-width: toRem(1920)) {
+		#{$property}: #{$pcSize + px};
+	}
+
+	@media (max-width: toRem(1920)) {
+		@media (max-width: 1920px) {
+			#{$property}: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 767px) / #{$maxWidth}));
+		}
+	}
+}
+// @include adaptiveValue ($property , $pcSize, $mobSize);
+
+//.......................................................................................
+
+//   Центрирование блока
+
+@mixin flexCenter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// @include flexCenter;
+
+//.......................................................................................
+
+[class*="__container"] {
+	max-width: 1680px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+.about {
+	margin-top: toRem(20);
+	width: 90%;
+	text-align: center;
+
+	& p {
+		@include adaptiveValue("font-size", 30, 20);
+		font-weight: 800;
+		color: blue;
+	}
+	& span {
+		@include adaptiveValue("font-size", 24, 20);
+		font-weight: 400;
+		color: black;
+	}
+}
+
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+.tehnical__text {
+	display: block;
+	margin: 0 auto;
+	padding: toRem(5) toRem(15);
+	font-size: toRem(18);
+	background-color: white;
+	color: rgb(6, 6, 6);
+	border: 1px solid black;
+
+	animation: butcolor 10s linear infinite;
+}
+
+.tehnical__block {
+	position: absolute;
+	top: -130%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 600;
+	background-color: #f6f1e7e5;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: top 1s ease-in-out;
+	box-shadow: 0px 0px 26px black inset;
+}
+
+.tehbody {
+	width: 100vw;
+	height: 100vh;
+	padding: toRem(50);
+	// display: flex;
+	box-shadow: 0px 0px 26px black inset;
+	overflow: auto;
+	& img {
+		width: toRem(50);
+		margin-left: 90%;
+		transform: rotate(90deg);
+		margin-bottom: toRem(30);
+		cursor: pointer;
+	}
+
+	& p {
+		font-size: clamp(16px, 1.1vw, 19px);
+		line-height: 1.6;
+		font-weight: 400;
+		letter-spacing: normal;
+		margin-bottom: 1.2em;
+
+		font-family: "one";
+		font-family: "tw";
+		color: black;
+	}
+}
+// ---------------------------------------
+.tehbody__img {
+	position: fixed;
+	top: 50%;
+	right: 2%;
+	opacity: 0.5;
+
+	//  вращение кнопки
+	animation: spin 4s linear infinite;
+	transform-origin: center center;
+	will-change: transform;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+// ---------------------------------------
+
+.icon__block {
+	width: 50%;
+	margin: 0 auto;
+
+	@media (max-width: toRem(500)) {
+		width: 100%;
+	}
+
+	& .alians {
+		margin: 0 auto;
+		transform: rotate(0deg);
+		width: 80%;
+	}
+}
+
+// ----------------------------------------------------------------------------
+
+.to-top {
+	position: fixed;
+	bottom: 2%;
+	right: 2%;
+	width: auto;
+	height: auto;
+	border-radius: 5px;
+	z-index: 400;
+	background-color: wheat;
+
+	@media (max-width: toRem(1500)) {
+		right: 1%;
+	}
+
+	& img {
+		width: toRem(40);
+		transform: rotate(90deg);
+
+		@media (max-width: toRem(1500)) {
+			width: toRem(20);
+		}
+	}
+}
+
+a .to-top {
+	border: 1px solid white;
+}
+
+.wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+
+	& h1 {
+		@include adaptiveValue("font-size", 170, 70);
+		font-weight: bold;
+
+		color: rgb(246, 246, 248);
+
+		animation: teni 10s linear forwards infinite;
+		@media (max-width: toRem(1500)) {
+		}
+		@media (max-width: toRem(600)) {
+			animation: teni2 10s ease-out forwards infinite;
+		}
+	}
+}
+.bg-video {
+	position: fixed; /* аналог background-attachment: fixed */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover; /* аналог background-size: cover */
+	z-index: -1; /* видео уходит под контент */
+	pointer-events: none; /* чтобы не мешало кликам/скроллу */
+}
+// ---------------------------------------------------  ANIMATIONS -----------------------------------------------------
+@keyframes teni {
+	/* Период стабильности: от 0% до 49.9% текст просто горит белым, теней нет */
+	0%,
+	47% {
+		color: rgba(255, 255, 255, 1);
+
+		/* Тени «сидят» внутри текста и полностью прозрачны */
+		text-shadow:
+			0px 0px 0px rgba(0, 0, 0, 0),
+			0px 0px 0px rgba(0, 0, 0, 0),
+			0px 0px 0px rgba(0, 0, 0, 0),
+			0px 0px 0px rgba(0, 0, 0, 0);
+	}
+	47.1% {
+		color: rgb(8, 8, 8);
+	}
+
+	/* Взрыв: ровно на 50% текст РЕЗКО исчезает, а тени РЕЗКО выходят наружу */
+	50% {
+		color: rgba(255, 255, 255, 0); /* Текст исчез */
+
+		/* Тени мгновенно материализуются в начальной точке разлета */
+		text-shadow:
+			30px 45px 10px rgba(0, 0, 0, 0.9),
+			-30px 45px 10px rgba(0, 0, 0, 0.9),
+			-30px -45px 10px rgba(0, 0, 0, 0.9),
+			30px -45px 10px rgba(0, 0, 0, 0.9);
+	}
+	90% {
+		color: rgba(255, 255, 255, 0); /* Текст исчез */
+	}
+
+	/* Финал: от 50% до 100% тени плавно улетают вдаль и тают */
+	100% {
+		// color: rgba(255, 255, 255, 0);
+		color: rgba(255, 255, 255, 1);
+		text-shadow:
+			120px 280px 70px rgba(0, 0, 0, 0),
+			-120px 280px 70px rgba(0, 0, 0, 0),
+			-120px -280px 70px rgba(0, 0, 0, 0),
+			120px -280px 70px rgba(0, 0, 0, 0);
+	}
+}
+
+@keyframes teni2 {
+	/* Период стабильности: от 0% до 49.9% текст просто горит белым, теней нет */
+	0%,
+	47% {
+		color: rgba(255, 255, 255, 1);
+
+		/* Тени «сидят» внутри текста и полностью прозрачны */
+		text-shadow:
+			0px 0px 0px rgba(0, 0, 0, 0),
+			0px 0px 0px rgba(0, 0, 0, 0),
+			0px 0px 0px rgba(0, 0, 0, 0),
+			0px 0px 0px rgba(0, 0, 0, 0);
+	}
+	47.1% {
+		color: rgb(8, 8, 8);
+	}
+
+	/* Взрыв: ровно на 50% текст РЕЗКО исчезает, а тени РЕЗКО выходят наружу */
+	50% {
+		color: rgba(255, 255, 255, 0); /* Текст исчез */
+
+		/* Тени мгновенно материализуются в начальной точке разлета */
+		text-shadow:
+			30px 45px 10px rgba(0, 0, 0, 0.9),
+			-30px 45px 10px rgba(0, 0, 0, 0.9),
+			-30px -45px 10px rgba(0, 0, 0, 0.9),
+			30px -45px 10px rgba(0, 0, 0, 0.9);
+	}
+	90% {
+		color: rgba(255, 255, 255, 0); /* Текст исчез */
+	}
+
+	/* Финал: от 50% до 100% тени плавно улетают вдаль и тают */
+	100% {
+		// color: rgba(255, 255, 255, 0);
+		color: rgba(255, 255, 255, 1);
+		text-shadow:
+			120px 80px 70px rgba(0, 0, 0, 0),
+			-120px 80px 70px rgba(0, 0, 0, 0),
+			-120px -80px 70px rgba(0, 0, 0, 0),
+			120px -80px 70px rgba(0, 0, 0, 0);
+	}
+}
+
+.zaglavie {
+	position: relative;
+	width: 100%;
+	height: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10%;
+	overflow: hidden;
+
+	@media (max-width: toRem(1500)) {
+		margin-top: 20%;
+	}
+}
+
+.b2,
+.b3 {
+	position: absolute;
+}
+
+.b2 {
+	animation: bolid 10s ease-out forwards infinite;
+}
+
+@keyframes bolid {
+	0% {
+		width: toRem(300);
+		transform: rotate(0);
+		top: -120%;
+		left: -150%;
+	}
+
+	100% {
+		width: toRem(1);
+		transform: rotate(660deg);
+		top: 140%;
+		left: 160%;
+	}
+}
+
+.b3 {
+	animation: b3 10s ease-in-out infinite;
+}
+
+@keyframes b3 {
+	0% {
+		width: 0;
+	}
+	45% {
+		width: 0;
+		transform: rotate(0);
+	}
+	46% {
+		width: toRem(500);
+		transform: rotate(-660deg);
+	}
+	47% {
+		width: 0;
+	}
+	100% {
+		width: 0;
+	}
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------------
+.nazad {
+	position: absolute;
+	bottom: 2%;
+	right: 2%;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+
+	justify-content: center;
+	gap: toRem(30);
+	padding: 0 toRem(150);
+	width: 100%;
+	height: toRem(70);
+	min-height: 0; // важно, чтобы flex не сопротивлялся уменьшению
+	background-color: rgba(255, 255, 255, 0.268);
+	position: fixed;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: height 0.4s ease;
+	// overflow: hidden;
+
+	z-index: 400;
+
+	&__container {
+		position: relative;
+		width: 100%;
+		height: auto;
+		margin-top: toRem(100);
+		background-color: rgba(255, 255, 255, 0.268);
+	}
+}
+
+.nav--list {
+	position: absolute;
+
+	display: none;
+
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: toRem(20);
+	justify-content: space-around;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%);
+	width: 80%;
+	height: auto;
+	padding: toRem(30);
+	background-color: #f2efe6;
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0px 0px 56px #ce542d;
+	border-radius: 6px;
+	z-index: 450;
+
+	@media (max-width: toRem(1500)) {
+		width: 80%;
+	}
+
+	& a {
+		color: black;
+		@include adaptiveValue("font-size", 22, 18);
+		font-weight: 900;
+		letter-spacing: 1.2px;
+
+		&:hover {
+			color: rgb(31, 27, 47);
+			font-size: toRem(22);
+			font-weight: 400;
+		}
+	}
+
+	& p {
+		color: rgb(252, 250, 250);
+		background-color: #ce542d;
+		padding: toRem(10) 0;
+		text-align: center;
+		@include adaptiveValue("font-size", 22, 18);
+		font-weight: 900;
+		letter-spacing: 1.2px;
+	}
+}
+
+.nav {
+	display: block;
+	// color: white;
+}
+.nav--button {
+	width: toRem(200);
+	padding: toRem(10);
+	font-size: toRem(20);
+	color: rgb(249, 6, 6);
+	letter-spacing: 1.4;
+	font-weight: 900;
+	box-shadow:
+		inset 0 8px 12px -8px rgb(246, 4, 20),
+		/* тень сверху */ inset 0 -8px 12px -8px rgb(249, 3, 3); /* тень снизу */
+
+	&:hover {
+		color: rgb(184, 4, 4);
+	}
+}
+.sizefont {
+	display: block; /* явно задаём начальное состояние */
+}
+
+.sound-toggle {
+	position: absolute;
+	top: 5%;
+	right: 2%;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	background-image: url("../icon/off.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	cursor: pointer;
+}
+.sound-toggle.muted {
+	background-image: url("../icon/on.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	cursor: pointer;
+}
+// --------------------------------------------------------------------------------------------
+
+.main {
+	margin-top: 50vh;
+
+	&__container {
+		// background-color: #dfddd7dc;
+		// background-color: #eceff1e5;
+		background-color: #f6f1e7e5;
+
+		display: flex;
+		flex-direction: column;
+		padding: toRem(50);
+		border-radius: 20px;
+
+		@media (max-width: toRem(1500)) {
+			padding: toRem(50) toRem(20);
+		}
+
+		& .book2 {
+			text-align: center;
+			@include adaptiveValue("font-size", 40, 30);
+			font-weight: bold;
+		}
+	}
+}
+
+.prolog,
+.episode1,
+.episode2 {
+	padding: 0 toRem(40);
+
+	& h2 {
+		font-weight: 600;
+		font-size: toRem(40);
+		text-shadow: 0px 0px 1px black;
+		letter-spacing: 2px;
+
+		margin: toRem(50) 0;
+		// display: block;
+		text-align: center;
+	}
+	& p {
+		color: #232323;
+		color: #1f1f1f;
+
+		font-size: clamp(16px, 1.1vw, 19px);
+		line-height: 1.6;
+		font-weight: 400;
+		letter-spacing: normal;
+		margin-bottom: 1.2em;
+
+		font-family: "one";
+		font-family: "tw";
+	}
+	& .star {
+		display: block;
+		text-align: center;
+	}
+	& .name {
+		font-weight: bold;
+		font-size: toRem(24);
+		color: blue;
+	}
+}
+.lozung {
+	text-align: center;
+	font-weight: 900;
+}
+.predislovie {
+	text-align: center;
+}
+// -------------------------------------------   footer    -----------------------------
+
+.footer {
+	margin: toRem(20) 0;
+
+	&__container {
+		background-color: #f6f1e7e5;
+		padding: toRem(20) 0;
+	}
+}
+.next {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	& a img {
+		width: toRem(50);
+	}
+	& a {
+		display: flex;
+		align-items: center;
+		font-size: toRem(20);
+		column-gap: toRem(10);
+	}
+}
+.prev {
+	& img {
+		transform: rotate(180deg);
+	}
+}
+.cometa {
+	transform: rotateY(180deg);
+}
+
+// ------------------------------   контакты с автором ---------------------------------------
+
+.adr {
+	width: 25%;
+	text-align: center;
+	@media (max-width: toRem(1200)) {
+		width: 90%;
+	}
+
+	& p {
+		@include adaptiveValue("font-size", 24, 18);
+		font-weight: 900;
+		margin-bottom: toRem(10);
+	}
+}
+
+.contacts {
+	&__block {
+		width: 100%;
+		padding: toRem(50) 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		@media (max-width: toRem(1200)) {
+			flex-direction: column;
+			gap: toRem(20);
+		}
+	}
+}
+.contacts--name {
+	& span {
+		@include adaptiveValue("font-size", 34, 18);
+		font-weight: 900;
+	}
+}
+
+.contacts--vizitka {
+	display: flex;
+	justify-content: center;
+}
+.creted {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: toRem(300);
+	height: toRem(167);
+	// border: 1px solid black;
+	background: -webkit-linear-gradient(135deg, rgb(255, 215, 0), rgb(1, 106, 53));
+	background: -moz-linear-gradient(135deg, rgb(255, 215, 0), rgb(1, 106, 53));
+	background: linear-gradient(135deg, rgb(255, 215, 0), rgb(1, 106, 53));
+	border-radius: 10px;
+
+	z-index: 999;
+	cursor: pointer;
+
+	&:hover {
+		.sh {
+			transform: scale(7);
+			transition: transform 0.7s linear;
+		}
+	}
+
+	& .sh {
+		width: toRem(70);
+	}
+
+	& p {
+		display: flex;
+		align-items: center;
+		color: rgb(254, 254, 254);
+		font-size: toRem(20);
+		font-weight: 900;
+		text-shadow: 0px 0px 3px black;
+	}
+}
+
+// ----------------------------------------     ЗАСТАВКА ----------------------------------------
+
+/* ===================== ОВЕРЛЕЙ .run ===================== */
+.run {
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999;
+	overflow: hidden;
+	background: #000; /* ← ДОБАВИЛ ЭТУ СТРОКУ */
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	opacity: 1;
+	transition: opacity 1s ease;
+}
+
+/* класс, который позже навесит скрипт по клику на кнопку */
+.run.fade-out {
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* видео-фон внутри .run — добавишь свой <video class="run__video"> */
+.run__video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+	z-index: -2;
+}
+
+/* затемнение поверх видео для читаемости текста */
+.run__darken {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: -1;
+}
+
+/* ===================== ТЕКСТОВЫЙ БЛОК .run__text ===================== */
+.run__text {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.run__text p {
+	font-weight: 200;
+	@include adaptiveValue("font-size", 46, 28);
+	letter-spacing: 4px;
+	color: #ffffff;
+	text-shadow: 0 0 20px rgb(9, 9, 9);
+	margin-bottom: 14px;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 900;
+
+	opacity: 0;
+	animation: fadeInLine 1s ease forwards;
+}
+
+/* индивидуальные классы параграфов — задержки анимации */
+.run__text p.line-1 {
+	animation-delay: 3s;
+}
+.run__text p.line-2 {
+	animation-delay: 6s;
+}
+.run__text p.line-3 {
+	animation-delay: 9s;
+}
+.run__text p.line-4 {
+	animation-delay: 12s;
+}
+
+@keyframes fadeInLine {
+	from {
+		opacity: 0;
+		transform: translateY(15px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ===================== КНОПКА .run__button ===================== */
+.run__button {
+	margin-top: 30px;
+	opacity: 0;
+	animation: fadeInLine 1s ease forwards;
+	animation-delay: 15s;
+}
+
+.run__button button {
+	padding: 16px 44px;
+	@include adaptiveValue("font-size", 36, 28);
+	letter-spacing: 3px;
+	border: 1px solid #fff;
+	background: transparent;
+	color: #fff;
+	font-family: "Exo 2", sans-serif;
+	font-weight: 900;
+	border-radius: 50px;
+	cursor: pointer;
+	transition:
+		background 0.3s ease,
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.run__button button:hover {
+	background: #fff;
+	color: #111;
+	transform: scale(1.05);
+}
+// -------------------------------------------------------------
+
+.contacts__block {
+	background-color: #f6f1e7e5;
+	margin-bottom: toRem(50);
+}
