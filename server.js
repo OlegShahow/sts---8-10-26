@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const path = require('path');
+const { ObjectId } = require('mongodb');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -52,6 +53,37 @@ app.post('/comments', async (req, res) => {
 		res.json({ ok: true, comment: newComment });
 	} catch (err) {
 		res.status(500).json({ error: 'Ошибка записи' });
+	}
+});
+
+
+// ====== АДМИНКА ======
+
+// Проверка пароля и выдача токена
+app.post('/admin/login', (req, res) => {
+	const { password } = req.body;
+	if (!password || password !== process.env.ADMIN_PASSWORD) {
+		return res.status(401).json({ error: 'Неверный пароль' });
+	}
+	// Простой токен — сам пароль, закодированный. Для курилки достаточно.
+	const token = Buffer.from(password).toString('base64');
+	res.json({ ok: true, token });
+});
+
+// Удаление комментария (только с правильным токеном)
+app.delete('/comments/:id', async (req, res) => {
+	try {
+		const token = req.headers['x-admin-token'];
+		const expected = Buffer.from(process.env.ADMIN_PASSWORD || '').toString('base64');
+		if (!token || token !== expected) {
+			return res.status(401).json({ error: 'Нет доступа' });
+		}
+		const { id } = req.params;
+		await commentsCollection.deleteOne({ _id: new ObjectId(id) });
+		res.json({ ok: true });
+	} catch (err) {
+		console.error('Ошибка удаления:', err);
+		res.status(500).json({ error: 'Ошибка удаления' });
 	}
 });
 
