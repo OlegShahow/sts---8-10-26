@@ -1474,7 +1474,7 @@ a .to-top {
 .comment .date {
   font-size: 0.9375rem;
   color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.6px;
   text-shadow: 1px 1px 3px #000;
 }
 
@@ -1483,7 +1483,7 @@ a .to-top {
   white-space: pre-wrap;
   font-size: 1.25rem;
   line-height: 1.5;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.6px;
   color: #fff;
   text-shadow: 2px 2px 4px #000, 0 0 6px rgba(0, 0, 0, 0.8);
 }
