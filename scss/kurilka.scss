@@ -1,0 +1,109 @@
+@import "null.scss";
+@import "style.scss";
+// подключать только если есть в этих файлах данные. пустыми не подключать !!
+@import "var.scss";
+@import "basestyle.scss";
+
+.wrapper__kurilka {
+	position: relative;
+	background-image: url(../img/fon2.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100vw;
+	height: 100vh;
+	padding-top: toRem(100);
+	padding-bottom: toRem(100);
+	@include adaptiveValue("padding-left", 200, 50);
+	@include adaptiveValue("padding-right", 200, 50);
+	overflow-y: auto;
+	scroll-behavior: smooth;
+	text-align: center;
+
+	& h6 {
+		color: #faf6f6;
+		@include adaptiveValue("font-size", 70, 30);
+		margin-bottom: toRem(50);
+	}
+}
+
+.form {
+	background: #540cf000;
+	backdrop-filter: blur(3px);
+	box-shadow: 0px 0px 6px white inset;
+	padding: toRem(15);
+	border-radius: 8px;
+	margin-bottom: toRem(20);
+}
+
+.form input,
+.form textarea {
+	width: 100%;
+	padding: toRem(8);
+	margin-bottom: toRem(10);
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-family: inherit;
+	font-size: toRem(20);
+}
+
+.form input:focus,
+.form textarea:focus {
+	outline: none;
+	border-color: #e52c67;
+	box-shadow: 0 0 4px #e52c67;
+}
+
+.form textarea {
+	min-height: toRem(80);
+	resize: vertical;
+}
+
+.form button {
+	background: #e52c67c3;
+	color: #fff;
+	border: 1px solid #ccc;
+	padding: toRem(10) toRem(20);
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: toRem(18);
+}
+
+.form button:hover {
+	background: #c92358;
+}
+
+.comment {
+	padding: toRem(12) toRem(15);
+	border-radius: 8px;
+	margin-bottom: toRem(10);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(3px);
+	color: #fff;
+	text-align: left;
+}
+
+.comment .name {
+	font-weight: bold;
+	color: #e52c67;
+}
+
+.comment .date {
+	font-size: toRem(16);
+	color: #999;
+	margin-left: toRem(8);
+}
+
+.comment .text {
+	margin-top: toRem(6);
+	white-space: pre-wrap;
+}
+
+.empty {
+	color: #999;
+	text-align: center;
+	padding: toRem(20);
+}
