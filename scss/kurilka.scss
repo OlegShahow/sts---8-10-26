@@ -87,14 +87,17 @@
 // }
 
 .comment {
-	padding: toRem(12) toRem(15);
+	padding: toRem(16) toRem(20);
 	border-radius: 8px;
-	margin-bottom: toRem(10);
-	background: #540cf000;
-	backdrop-filter: blur(3px);
-	box-shadow: 0px 0px 6px white inset;
+	margin-bottom: toRem(12);
+	background: rgba(0, 0, 0, 0.55);
+	backdrop-filter: blur(6px);
+	box-shadow:
+		0px 0px 6px white inset,
+		0px 2px 6px rgba(0, 0, 0, 0.5);
 	color: #fff;
 	text-align: left;
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 // .comment .name {
@@ -103,10 +106,15 @@
 // }
 
 .comment .name {
+	display: inline-block;
 	font-weight: bold;
 	color: #fff;
-	font-size: toRem(20);
-	text-shadow: 1px 1px 2px #000;
+	font-size: toRem(22);
+	letter-spacing: 0.5px;
+	text-shadow:
+		2px 2px 4px #000,
+		0 0 8px rgba(0, 0, 0, 0.9);
+	margin-right: toRem(12);
 }
 
 // .comment .date {
@@ -116,10 +124,10 @@
 // }
 
 .comment .date {
-	font-size: toRem(16);
+	font-size: toRem(15);
 	color: rgba(255, 255, 255, 0.75);
-	margin-left: toRem(8);
-	text-shadow: 0px 0px 6px #000;
+	letter-spacing: 0.3px;
+	text-shadow: 1px 1px 3px #000;
 }
 
 // .comment .text {
@@ -128,13 +136,16 @@
 // }
 
 .comment .text {
-	margin-top: toRem(6);
+	margin-top: toRem(10);
 	white-space: pre-wrap;
-	font-size: toRem(22);
+	font-size: toRem(20);
+	line-height: 1.5;
+	letter-spacing: 0.3px;
 	color: #fff;
-	text-shadow: 0px 0px 6px #000;
+	text-shadow:
+		2px 2px 4px #000,
+		0 0 6px rgba(0, 0, 0, 0.8);
 }
-
 .empty {
 	color: #999;
 	text-align: center;
