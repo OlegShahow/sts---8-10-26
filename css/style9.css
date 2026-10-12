@@ -2805,7 +2805,7 @@ a .to-top {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url(../img/2.jpeg);
+  background-image: url(../img/people/popup3.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -2865,4 +2865,85 @@ a .to-top {
 .bitva:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+@media (min-width: 120rem) {
+  .baza h2 {
+    font-size: 50px;
+  }
+}
+@media (max-width: 120rem) and (max-width: 1920px) {
+  .baza h2 {
+    font-size: calc(30px + 34 * (100vw - 767px) / 1920);
+  }
+}
+.baza h2 {
+  color: white;
+}
+@media (min-width: 120rem) {
+  .baza h3 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 120rem) and (max-width: 1920px) {
+  .baza h3 {
+    font-size: calc(26px + 23.8 * (100vw - 767px) / 1920);
+  }
+}
+.baza h3 {
+  color: white;
+}
+.baza .gerb {
+  width: 20%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.498);
+}
+.baza .gerb img {
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  padding: 1.875rem;
+  text-align: center;
+}
+.card img {
+  width: 70%;
+  -webkit-box-shadow: 0px 0px 6px white;
+          box-shadow: 0px 0px 6px white;
+  margin-bottom: 1.875rem;
+}
+@media (min-width: 120rem) {
+  .card p {
+    font-size: 26px;
+  }
+}
+@media (max-width: 120rem) and (max-width: 1920px) {
+  .card p {
+    font-size: calc(18px + 13.6 * (100vw - 767px) / 1920);
+  }
+}
+.card p {
+  color: #f0f0f0;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px #000, 0 0 8px rgba(0, 0, 0, 0.9);
+}
+@media (min-width: 120rem) {
+  .card span {
+    font-size: 30px;
+  }
+}
+@media (max-width: 120rem) and (max-width: 1920px) {
+  .card span {
+    font-size: calc(20px + 17 * (100vw - 767px) / 1920);
+  }
+}
+.card span {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000, 0 0 8px rgba(0, 0, 0, 0.9);
 }
