@@ -2779,3 +2779,90 @@ a .to-top {
     font-size: 1.875rem;
   }
 }
+
+@media (max-width: 1200) {
+  .galery__body {
+    padding: 1.875rem 0;
+  }
+}
+.galery__body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 600;
+  height: 100vh;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.875rem;
+  padding: 1.875rem 3.125rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url(../img/2.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+  visibility: hidden;
+  -webkit-transition: visibility 0s linear 0.5s, -webkit-transform 0.5s ease;
+  transition: visibility 0s linear 0.5s, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, visibility 0s linear 0.5s;
+  transition: transform 0.5s ease, visibility 0s linear 0.5s, -webkit-transform 0.5s ease;
+}
+.galery__body.is-open {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  visibility: visible;
+  -webkit-transition: visibility 0s linear 0s, -webkit-transform 0.5s ease;
+  transition: visibility 0s linear 0s, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, visibility 0s linear 0s;
+  transition: transform 0.5s ease, visibility 0s linear 0s, -webkit-transform 0.5s ease;
+}
+
+.bitva--closed {
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  opacity: 1;
+  -webkit-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  width: 3.125rem;
+  cursor: pointer;
+  will-change: transform;
+}
+.bitva--closed img {
+  width: 100%;
+}
+@media (max-width: 1200px) {
+  .bitva--closed {
+    right: 0;
+  }
+}
+
+.bitva {
+  width: 12.5rem;
+  padding: 0.625rem;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: rgb(8, 8, 8);
+  letter-spacing: 1.4;
+  -webkit-box-shadow: inset 0 8px 12px -8px rgb(11, 11, 11), inset 0 -8px 12px -8px rgb(15, 15, 15);
+          box-shadow: inset 0 8px 12px -8px rgb(11, 11, 11), inset 0 -8px 12px -8px rgb(15, 15, 15); /* тень снизу */
+}
+.bitva:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}

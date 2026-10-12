@@ -3,19 +3,6 @@
 
 
 
-// const popup = document.querySelector('.galery__body');
-// const openBtn = document.querySelector('.bitva');
-// const closeBtn = document.querySelector('.bitva--closed');
-
-// openBtn.addEventListener('click', () => {
-// 	popup.classList.add('is-open');
-// 	document.body.style.overflow = 'hidden';
-// });
-
-// closeBtn.addEventListener('click', () => {
-// 	popup.classList.remove('is-open');
-// 	document.body.style.overflow = '';
-// });
 
 
 /* =========================================================
