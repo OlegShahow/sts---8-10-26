@@ -185,10 +185,11 @@
 	padding: toRem(30) toRem(50);
 	align-items: center;
 
-	background-image: url(../img/people/popup3.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+	// background-image: url(../img/people/popup3.png);
+	// background-repeat: no-repeat;
+	// background-position: center;
+	// background-size: cover;
+	background-color: black;
 
 	transform: translateY(-100%);
 	visibility: hidden;
