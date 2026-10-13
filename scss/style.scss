@@ -71,15 +71,20 @@ $maxWidth: 1920;
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 .tehnical__text {
-	display: block;
-	margin: 0 auto;
-	padding: toRem(5) toRem(15);
-	font-size: toRem(18);
-	background-color: white;
-	color: rgb(6, 6, 6);
-	border: 1px solid black;
+	width: toRem(200);
+	padding: toRem(10);
+	font-size: toRem(20);
+	font-weight: 900;
+	color: rgb(8, 8, 8);
+	letter-spacing: 1.4;
+	// background: transparent;
+	box-shadow:
+		inset 0 8px 12px -8px rgb(11, 11, 11),
+		/* тень сверху */ inset 0 -8px 12px -8px rgb(15, 15, 15); /* тень снизу */
 
-	animation: butcolor 10s linear infinite;
+	&:hover {
+		box-shadow: none;
+	}
 }
 
 .tehnical__block {
@@ -843,7 +848,7 @@ a .to-top {
 				inset 0 -4px 6px rgba(0, 0, 0, 0.4);
 			&:hover {
 				background-color: white;
-				box-shadow:none;
+				box-shadow: none;
 			}
 		}
 	}
